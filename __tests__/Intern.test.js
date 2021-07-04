@@ -14,3 +14,9 @@ test("get school", () => {
 
     expect(intern.getSchool()).toBe("Utah State University");
 });
+
+test("get role", () => {
+    const intern = new Intern();
+
+    expect(intern.getRole()).toBe("Intern");
+});
