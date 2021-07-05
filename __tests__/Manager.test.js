@@ -19,4 +19,4 @@ test("get role", () => {
     const manager = new Manager;
 
     expect(manager.getRole()).toBe("Manager");
-})
+});
