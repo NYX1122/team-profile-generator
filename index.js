@@ -111,7 +111,7 @@ const addIntern = () => {
         {
             type: "input",
             name: "school",
-            message: "Intern schoool?"
+            message: "Intern school?"
         }])
         .then (({ name, id, email, school }) => {
             employees.push(new Intern(name, id, email, school));
