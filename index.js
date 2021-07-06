@@ -109,7 +109,7 @@ const addIntern = () => {
         },
         {
             type: "input",
-            name: "School",
+            name: "school",
             message: "Intern schoool?"
         }])
         .then (({ name, id, email, school }) => {

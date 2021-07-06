@@ -1,54 +1,70 @@
 const writeFile = require("../utils/fileGenerator");
 
 const buildCards = employees => {
-    for (i = 0; i <= employees.length; i++) {
-        var employee = employees[i];
-        var role = employee.getRole();
-        var cards = "";
-        if (role === "Manager") {
-            cards += `
-            <div>
-                <div>
-                    <h2>${employee.getName()}</h2>
-                    <h3>${employee.getRole()}</h3>
-                </div>
-                <div>
-                    <p>${employee.getId()}</p>
-                    <p>${employee.getEmail()}</p>
-                    <p>${employee.officeNumber}</p>
-                </div>
+    var cards = "";
+
+    const managerCard = (employee) => {
+        return `
+        <div class="card col-3 mx-2 p-0">
+            <div class="card-header bg-primary p-3 m-0">
+                <h2 class="card-title text-white">${employees[i].getName()}</h2>
+                <h3 class="card-subtitle text-white">${employees[i].getRole()}</h3>
             </div>
-            `;
-        } else if (role === "Engineer") {
-            cards += `
-            <div>
-                <div>
-                    <h2>${employee.getName()}</h2>
-                    <h3>${employee.getRole()}</h3>
-                </div>
-                <div>
-                    <p>${employee.getId()}</p>
-                    <p>${employee.getEmail()}</p>
-                    <p>${employee.getGithub()}</p>
-                </div>
+            <div class="list-group list-group-flush">
+                <p class="list-group-item m-0">ID: ${employees[i].getId()}</p>
+                <a class="list-group-item m-0" href="mailto:${employees[i].getEmail()}"><p class="m-0">Email: ${employees[i].getEmail()}</p></a>
+                <p class="list-group-item m-0">Office Number: ${employees[i].officeNumber}</p>
             </div>
-            `;
-        } else {
-            cards += `
-            <div>
-                <div>
-                    <h2>${employee.getName()}</h2>
-                    <h3>${employee.getRole()}</h3>
-                </div>
-                <div>
-                    <p>${employee.getId()}</p>
-                    <p>${employee.getEmail()}</p>
-                    <p>${employee.getSchool()}</p>
-                </div>
-            </div>
-            `;
-        }
+        </div>
+        `;
     }
+
+    const engineerCard = (employee) => {
+        return `
+        <div class="card col-3 mx-2 p-0">
+            <div class="card-header bg-primary p-3 m-0">
+                <h2 class="card-title text-white">${employees[i].getName()}</h2>
+                <h3 class="card-subtitle text-white">${employees[i].getRole()}</h3>
+            </div>
+            <div class="list-group list-group-flush">
+                <p class="list-group-item m-0">ID: ${employees[i].getId()}</p>
+                <a class="list-group-item m-0" href="mailto:${employees[i].getEmail()}"><p class="m-0">Email: ${employees[i].getEmail()}</p></a>
+                <a class="list-group-item m-0" href="https://github.com/${employees[i].getGithub()}" target="_blank"><p class="m-0">Github: ${employees[i].getGithub()}</p></a>
+            </div>
+        </div>
+        `;
+    }
+
+    const internCard = (employee) => {
+        return `
+        <div class="card col-3 mx-2 p-0">
+            <div class="card-header bg-primary p-3 m-0">
+                <h2 class="card-title text-white">${employees[i].getName()}</h2>
+                <h3 class="card-subtitle text-white">${employees[i].getRole()}</h3>
+            </div>
+            <div class="list-group list-group-flush">
+                <p class="list-group-item m-0">ID: ${employees[i].getId()}</p>
+                <a class="list-group-item m-0" href="mailto:${employees[i].getEmail()}"><p class="m-0">Email: ${employees[i].getEmail()}</p></a>
+                <p class="list-group-item m-0">School: ${employees[i].getSchool()}</p>
+            </div>
+        </div>
+        `;
+    }
+
+    var i = 0;
+    while (i < employees.length) {
+        if(employees[i].getRole() === "Manager") {
+            cards += managerCard(employees[i]);
+        }
+        else if(employees[i].getRole() === "Engineer") {
+            cards += engineerCard(employees[i]);
+        } else {
+            cards += internCard(employees[i]);
+        }
+
+        i++;
+    }
+
     return cards;
 }
 
@@ -70,7 +86,7 @@ const buildPage = (employees) => {
             <h1 class="bg-danger py-5 text-center text-white">My Team</h1>
         </header>
 
-        <section>
+        <section class="row justify-content-center mt-5">
             ${buildCards(employees)}
         </section>
     </body>
@@ -80,8 +96,7 @@ const buildPage = (employees) => {
 }
 
 const buildHTML = employees => {
-    //writeFile(buildPage(employees));
-    console.log(buildCards(employees));
+    writeFile(buildPage(employees));
 }
 
 module.exports = buildHTML;
