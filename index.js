@@ -132,4 +132,4 @@ const finish = () => {
     buildHTML(employees);
 }
 
-start();
+begin();
