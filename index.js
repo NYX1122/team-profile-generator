@@ -3,6 +3,7 @@ const buildHTML = require("./src/HTMLGenerator");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const { start } = require("repl");
 
 const employees = [];
 
@@ -128,7 +129,7 @@ const dummyData = [
 ];
 
 const finish = () => {
-    buildHTML(dummyData);
+    buildHTML(employees);
 }
 
-finish();
+start();
