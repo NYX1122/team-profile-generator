@@ -118,8 +118,17 @@ const addIntern = () => {
         });
 }
 
+const dummyData = [
+    new Manager("BoDee Angus", "12159", "nyx0hemir@gmail.com", "202"),
+    new Engineer("John Doe", "12345", "john@gmail.com", "john"),
+    new Intern("John Doe", "12345", "john@gmail.com", "University"),
+    new Engineer("John Doe", "12345", "john@gmail.com", "john"),
+    new Intern("John Doe", "12345", "john@gmail.com", "University"),
+    new Engineer("John Doe", "12345", "john@gmail.com", "john")
+];
+
 const finish = () => {
-    buildHTML(employees);
+    buildHTML(dummyData);
 }
 
-begin();
+finish();

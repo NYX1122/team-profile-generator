@@ -5,10 +5,10 @@ const buildCards = employees => {
 
     const managerCard = (employee) => {
         return `
-        <div class="card col-3 mx-2 p-0">
+        <div class="card col-xxl-2 col-xl-3 col-lg-3 col-md-5 col-sm-5 col-10 mx-2 mb-4 mb-md-5 p-0">
             <div class="card-header bg-primary p-3 m-0">
                 <h2 class="card-title text-white">${employees[i].getName()}</h2>
-                <h3 class="card-subtitle text-white">${employees[i].getRole()}</h3>
+                <h3 class="card-subtitle text-white"><span class="oi oi-clipboard"></span> ${employees[i].getRole()}</h3>
             </div>
             <div class="list-group list-group-flush">
                 <p class="list-group-item m-0">ID: ${employees[i].getId()}</p>
@@ -21,10 +21,10 @@ const buildCards = employees => {
 
     const engineerCard = (employee) => {
         return `
-        <div class="card col-3 mx-2 p-0">
+        <div class="card col-xxl-2 col-xl-3 col-lg-3 col-md-5 col-sm-5 col-10 mx-2 mb-4 mb-md-5 p-0">
             <div class="card-header bg-primary p-3 m-0">
                 <h2 class="card-title text-white">${employees[i].getName()}</h2>
-                <h3 class="card-subtitle text-white">${employees[i].getRole()}</h3>
+                <h3 class="card-subtitle text-white"><span class="oi oi-code"></span> ${employees[i].getRole()}</h3>
             </div>
             <div class="list-group list-group-flush">
                 <p class="list-group-item m-0">ID: ${employees[i].getId()}</p>
@@ -37,10 +37,10 @@ const buildCards = employees => {
 
     const internCard = (employee) => {
         return `
-        <div class="card col-3 mx-2 p-0">
+        <div class="card col-xxl-2 col-xl-3 col-lg-3 col-md-5 col-sm-5 col-10 mx-2 mb-4 mb-md-5 p-0">
             <div class="card-header bg-primary p-3 m-0">
                 <h2 class="card-title text-white">${employees[i].getName()}</h2>
-                <h3 class="card-subtitle text-white">${employees[i].getRole()}</h3>
+                <h3 class="card-subtitle text-white"><span class="oi oi-book"></span> ${employees[i].getRole()}</h3>
             </div>
             <div class="list-group list-group-flush">
                 <p class="list-group-item m-0">ID: ${employees[i].getId()}</p>
@@ -78,15 +78,16 @@ const buildPage = (employees) => {
         <meta http-equiv="X-UA-Compatible" content="id=edge">
         <title>Team Profile Generator</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
         <link rel="stylesheet" href="style.css">
     </head>
     
     <body>
         <header>
-            <h1 class="bg-danger py-5 text-center text-white">My Team</h1>
+            <h1 class="bg-danger py-3 py-md-5 text-center text-white">My Team</h1>
         </header>
 
-        <section class="row justify-content-center mt-5">
+        <section class="row justify-content-center mt-4 mt-md-5">
             ${buildCards(employees)}
         </section>
     </body>
@@ -97,6 +98,7 @@ const buildPage = (employees) => {
 
 const buildHTML = employees => {
     writeFile(buildPage(employees));
+    console.log(employees)
 }
 
 module.exports = buildHTML;
